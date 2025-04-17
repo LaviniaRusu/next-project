@@ -22,7 +22,7 @@ export default function Home() {
       setLoading(true);
       try {
         const res = await axios.get<{ users: User[] }>(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=san`
         );
         console.log("result", res.data.users);
         setUsers(res.data.users);
@@ -45,7 +45,7 @@ export default function Home() {
       <NavBar />
 
       {error && <div>{`Eroare: ${error}`}</div>}
-      {isLoading && <LoaderCircle className="tailwind animate-spin" />}
+      {isLoading && <LoaderCircle className="animate-spin" />}
       {users.map((user) => (
         <div key={user.id} className="border border-b-neutral-600 ">
           <p>
