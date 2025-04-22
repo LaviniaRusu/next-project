@@ -1,0 +1,55 @@
+// components/UserCard.tsx
+
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+// }
+
+// const UserCard = ({ user }: { user: User }) => {
+//   return (
+//     <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+//       <h3 className="text-xl font-semibold mb-2">{user.name}</h3>
+//       <p className="text-gray-600 mb-1">
+//         <strong>Email:</strong> {user.email}
+//       </p>
+//     </div>
+//   );
+// };
+
+// export default UserCard;
+// components/UserCard.tsx
+
+import { Mail, Phone } from "lucide-react";
+
+interface User {
+  id: number;
+  name: string;
+  title: string;
+  department: string;
+  email: string;
+  phone: string;
+}
+
+const UserCard = ({ user }: { user: User }) => {
+  return (
+    <div className="bg-white p-4  shadow-md">
+      <div className="mb-1">
+        <h3 className="text-lg font-semibold text-gray-800">{user.name}</h3>
+        <p className="text-sm text-orange-600 font-medium">{user.title}</p>
+      </div>
+      <p className="text-sm text-orange-600 mb-3">{user.department}</p>
+
+      <div className="flex items-center text-sm text-gray-700 mb-1">
+        <Mail className="w-4 h-4 mr-2 text-orange-600 " />
+        <span>{user.email}</span>
+      </div>
+      <div className="flex items-center text-sm text-gray-700">
+        <Phone className="w-4 h-4 mr-2 text-orange-600 max-h-full" />
+        <span>{user.phone}</span>
+      </div>
+    </div>
+  );
+};
+
+export default UserCard;

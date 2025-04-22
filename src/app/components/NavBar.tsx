@@ -6,9 +6,9 @@ interface Props {
 
 const NavBar = ({ onSearch }: Props) => {
   return (
-    <div className="center">
-      <SearchInput onSearch={onSearch} />
-    </div>
+    <>
+      <SearchInput />
+    </>
   );
 };
 
