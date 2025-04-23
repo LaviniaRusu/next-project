@@ -1,3 +1,4 @@
+import NavBar from "./components/NavBar";
 import "./globals.css";
 
 export default function RootLayout({
@@ -7,7 +8,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavBar
+          onSearch={function (searchText: string): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

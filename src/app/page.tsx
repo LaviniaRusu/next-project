@@ -88,13 +88,11 @@ export default function Home() {
 
 "use client";
 
-import SearchInput from "./components/SearchInput";
-
 export default function Home() {
   return (
     <div className="p-4 md:max-lg:flex ">
       <h1 className="p-10 place-self-center font-bold">Homepage</h1>
-      <SearchInput />
+      {/* <SearchInput /> */}
     </div>
   );
 }
