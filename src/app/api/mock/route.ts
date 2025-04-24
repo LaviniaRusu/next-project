@@ -22,7 +22,7 @@ export async function GET(req: Request) {
     });
 
     // Add 3-second delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     // return NextResponse.json({ users: filteredUsers });
     return new Response(JSON.stringify({ users: filteredUsers }));
