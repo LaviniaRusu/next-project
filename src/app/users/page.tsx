@@ -139,6 +139,7 @@ export default function UsersPage() {
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=${searchQuery}`
         );
         setUsers(res.data.users);
+        console.log(res.data.users);
       } catch (err: any) {
         setError(err.message || "Eroare necunoscută");
       } finally {

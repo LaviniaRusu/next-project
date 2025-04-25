@@ -270,6 +270,7 @@ export default SearchInput;*/
 
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Search } from "lucide-react";
 
 interface User {
   id: number;
@@ -350,6 +351,7 @@ const SearchInput = () => {
           value={searchText}
           className="p-2 w-full"
         />
+        <Search className="  text-gray-400" />
       </form>
 
       {searchSuggestions.length > 0 && (
