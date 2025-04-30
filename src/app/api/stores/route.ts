@@ -1,10 +1,10 @@
 // Define a type for our user data
 interface Loc {
   name: string;
-  email: string;
+  email: string | null;
   address: string;
   phone: string;
-  fax: string;
+  fax?: string;
 }
 
 // Mock database
@@ -13,12 +13,12 @@ const stores: Loc[] = [
     name: "Arad 1",
     address: "Str. Independenței, nr. 5, Arad, 310005",
     email: "arad1@test.ro",
-    phone: "020000001",
+    phone: "",
     fax: "030000001",
   },
   {
     name: "Arad 2",
-    address: "Str. Vasile Goldiș, nr. 12, Arad, 310012",
+    address: "",
     email: "arad2@test.ro",
     phone: "020000002",
     fax: "030000002",
@@ -28,7 +28,7 @@ const stores: Loc[] = [
     address: "Str. 1 Decembrie, nr. 21, Arad, 310021",
     email: "arad3@test.ro",
     phone: "020000003",
-    fax: "030000003",
+ 
   },
   // {
   //   name: "Arad 4",
@@ -47,7 +47,7 @@ const stores: Loc[] = [
   {
     name: "Bistrița 2",
     address: "Str. Livezilor, nr. 10, Bistrița, 420010",
-    email: "bistrita2@test.ro",
+    email: null,
     phone: "020000006",
     fax: "030000006",
   },

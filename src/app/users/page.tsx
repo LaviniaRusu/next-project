@@ -116,7 +116,6 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import UserCard from "../components/UserCard";
 import { LoaderCircle } from "lucide-react";
-// import SearchInput from "../components/SearchInput";
 
 interface User {
   id: number;
@@ -153,7 +152,7 @@ export default function UsersPage() {
   return (
     <div className="p-4">
       {error && <div className="text-red-500">{`Eroare: ${error}`}</div>}
-      {/* <SearchInput /> */}
+
       {isLoading && <LoaderCircle className="animate-spin " />}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
         {users.map((user) => (

@@ -341,7 +341,7 @@ const SearchInput = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto relative">
+    <div className="w-full bg-white max-w-2xl mx-auto relative">
       <form onSubmit={handleSubmit} className="flex items-center border w-full">
         <input
           ref={ref}
@@ -349,9 +349,11 @@ const SearchInput = () => {
           placeholder="Caută utilizatori..."
           onChange={(e) => setSearchText(e.target.value)}
           value={searchText}
-          className="p-2 w-full"
+          className="w-[600px] h-[40px] px-4 py-2 "
         />
-        <Search className="  text-gray-400" />
+        <div className="flex justify-end">
+          <Search className=" absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        </div>
       </form>
 
       {searchSuggestions.length > 0 && (
