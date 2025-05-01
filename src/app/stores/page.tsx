@@ -14,7 +14,10 @@ export default function Stores() {
   //   setShowFilters((prev) => !prev);
   // };
   return (
-    <div>
+    <div className="">
+      {/* <button className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded">
+        Filtrează rezultatele
+      </button> */}
       <SearchFilterStores />
     </div>
   );

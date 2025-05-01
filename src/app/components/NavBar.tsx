@@ -76,9 +76,6 @@ const NavBar = ({ onSearch }: Props) => {
 
   return (
     <div className="w-full h-[80px] flex items-center justify-between px-4 py-2 bg-gray-100 shadow-md shadow-gray-500/50">
-      <button className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded">
-        Filtrează rezultatele
-      </button>
       <SearchInput />
 
       <div className="flex items-center space-x-4">

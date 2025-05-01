@@ -151,6 +151,9 @@ export default function UsersPage() {
 
   return (
     <div className="p-4">
+      <button className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded">
+        Filtrează rezultatele
+      </button>
       {error && <div className="text-red-500">{`Eroare: ${error}`}</div>}
 
       {isLoading && <LoaderCircle className="animate-spin " />}

@@ -341,7 +341,7 @@ const SearchInput = () => {
   };
 
   return (
-    <div className="w-full bg-white max-w-2xl mx-auto relative">
+    <div className=" bg-white max-w-2xl mx-auto relative">
       <form onSubmit={handleSubmit} className="flex items-center border w-full">
         <input
           ref={ref}
