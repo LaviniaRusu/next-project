@@ -1354,11 +1354,13 @@
 // };
 
 // export default SearchFilterStores;
+
+//////////////////////////////////////fara mobil design
 "use client";
 
 import React, { useEffect, useState } from "react";
 import { Mail, Phone, Printer, Search } from "lucide-react";
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />;
 interface Store {
   name: string;
   address: string;
@@ -1648,55 +1650,38 @@ const SearchFilterStores = () => {
   //
   return (
     <div className="w-full mx-auto ">
-      <div className="flex items-center">
-        <button
-          onClick={() => setShowFilter((prev) => !prev)}
-          className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded mb-2"
-        >
-          Filtrează rezultatele
-        </button>
-
-        {showFilter && (
-          <div className="px-65 ">
+      {/* Wrapper pentru inputul de căutare utilizatori și filtrare */}
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-start gap-4 mb-7 p-4">
+        {/* Butonul de filtrare */}
+        <div className="w-full lg:w-auto flex justify-center lg:justify-start">
+          <button
+            onClick={() => setShowFilter((prev) => !prev)}
+            className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap"
+          >
+            Filtrează rezultatele
+          </button>
+        </div>
+        {/* Inputul de filtrare */}
+        <div className=" bg-white  lg:ml-58  mx-auto relative flex justify-center  w-full lg:w-auto">
+          {showFilter && (
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex items-center border w-[600px] relative "
+              className="flex items-center border w-full "
             >
               <input
                 type="text"
                 placeholder="Caută magazine..."
                 onChange={(e) => setSearchText(e.target.value)}
                 value={searchText}
-                className="w-full h-[40px] px-4 py-2 bg-white"
+                className="w-[600px] h-[40px] px-4 py-2 bg-white"
               />
               <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
             </form>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-      {/* <div className="w-full mx-auto flex items-center gap-4 px-10 py-2">
-        <button
-          onClick={() => setShowFilter((prev) => !prev)}
-          className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap"
-        >
-          Filtrează rezultatele
-        </button>
-        {showFilter && (
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="bg-white flex items-center border px-3 py-2 rounded mb-4 flex-1"
-          >
-            <input
-              type="text"
-              placeholder="Caută magazine..."
-              onChange={(e) => setSearchText(e.target.value)}
-              value={searchText}
-              className="p-2 w-full outline-none"
-            />
-            <Search />
-          </form>
-        )}
-      </div> */}
+
+      {/* Restul componentei */}
       {loading && <p className="mt-2">Se încarcă...</p>}
       {!loading && error && <p className="mt-2 text-red-500">{error}</p>}
       {!loading && !error && groupedStores.length === 0 && (
@@ -1716,3 +1701,342 @@ const SearchFilterStores = () => {
 };
 
 export default SearchFilterStores;
+
+// "use client";
+
+// import React, { useEffect, useState } from "react";
+// import { Mail, Phone, Printer, Search } from "lucide-react";
+
+// interface Store {
+//   name: string;
+//   address: string;
+//   email: string;
+//   phone: string;
+//   fax: string;
+// }
+
+// interface Group {
+//   letters: string[];
+//   color: string;
+//   heading: string;
+// }
+
+// const StoreCard = ({ store }: { store: Store }) => (
+//   <div className="border rounded-lg shadow-sm p-4 bg-white w-full hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+//     <h3 className="text-lg font-semibold text-orange-600">{store.name}</h3>
+//     <p className="text-sm text-gray-600 mb-2">{store.address}</p>
+//     <div className="text-sm space-y-1">
+//       <div className="flex items-center">
+//         <Mail className="w-4 h-4 mr-2 text-orange-600" />
+//         {store.email}
+//       </div>
+//       <div className="flex items-center">
+//         <Phone className="w-4 h-4 mr-2 text-orange-600" />
+//         {store.phone}
+//       </div>
+//       <div className="flex items-center">
+//         <Printer className="w-4 h-4 mr-2 text-orange-600" />
+//         {store.fax}
+//       </div>
+//     </div>
+//     <button className="mt-4 w-full px-4 py-2 border rounded bg-gray-100 border-gray-300 text-sm text-black hover:bg-blue-700 hover:text-white transition">
+//       Vezi lista de contacte
+//     </button>
+//   </div>
+// );
+
+// const useMediaQuery = (query: string): boolean => {
+//   const [matches, setMatches] = useState(false);
+
+//   useEffect(() => {
+//     const media = window.matchMedia(query);
+//     if (media.matches !== matches) {
+//       setMatches(media.matches);
+//     }
+//     const listener = () => setMatches(media.matches);
+//     media.addEventListener("change", listener);
+//     return () => media.removeEventListener("change", listener);
+//   }, [matches, query]);
+
+//   return matches;
+// };
+
+// const MobileView = ({
+//   groupedStores,
+//   stores,
+// }: {
+//   groupedStores: Group[];
+//   stores: Store[];
+// }) => (
+//   <>
+//     {groupedStores.map((group, index) => (
+//       <div key={index} className="mb-6">
+//         <div
+//           className="flex items-center gap-2 text-white font-bold text-lg px-4 py-2 rounded-t"
+//           style={{ backgroundColor: group.color }}
+//         >
+//           {group.heading.split("").map((letter, idx) => (
+//             <span key={idx} className="px-2">
+//               {letter}
+//             </span>
+//           ))}
+//         </div>
+
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full bg-white p-4 rounded-b">
+//           {group.letters.map((storeName) => {
+//             const store = stores.find((s) => s.name === storeName);
+//             return store ? <StoreCard key={store.name} store={store} /> : null;
+//           })}
+//         </div>
+//       </div>
+//     ))}
+//   </>
+// );
+
+// const TableView = ({
+//   groupedStores,
+//   stores,
+// }: {
+//   groupedStores: Group[];
+//   stores: Store[];
+// }) => (
+//   <>
+//     {groupedStores.map((group, index) => (
+//       <div
+//         key={index}
+//         className="flex flex-col lg:flex-row mb-6 overflow-x-auto"
+//       >
+//         <div
+//           className="flex flex-col items-center justify-center text-white font-bold text-lg w-full lg:w-10 min-h-[100px]"
+//           style={{ backgroundColor: group.color }}
+//         >
+//           {group.heading.split("").map((letter, idx) => (
+//             <span key={idx}>{letter}</span>
+//           ))}
+//         </div>
+
+//         <div className="w-full overflow-x-auto">
+//           <table className="min-w-full bg-white table-auto border-collapse text-sm">
+//             <tbody>
+//               {group.letters.map((storeName) => {
+//                 const store = stores.find((s) => s.name === storeName);
+//                 return (
+//                   store && (
+//                     <tr
+//                       key={store.name}
+//                       className="group border-b border-gray-300 hover:bg-gray-100 cursor-pointer transition-colors"
+//                     >
+//                       <td className="px-4 py-2 font-medium">{store.name}</td>
+//                       <td className="px-4 py-2">{store.address}</td>
+//                       <td className="px-4 py-2">
+//                         <div className="flex items-center">
+//                           <Mail className="w-4 h-4 mr-2 text-orange-600" />
+//                           {store.email}
+//                         </div>
+//                       </td>
+//                       <td className="px-4 py-2">
+//                         <div className="flex items-center">
+//                           <Phone className="w-4 h-4 mr-2 text-orange-600" />
+//                           {store.phone}
+//                         </div>
+//                       </td>
+//                       <td className="px-4 py-2">
+//                         <div className="flex items-center">
+//                           <Printer className="w-4 h-4 mr-2 text-orange-600" />
+//                           {store.fax}
+//                         </div>
+//                       </td>
+//                       <td className="px-4 py-2">
+//                         <button className="w-full px-4 py-2 border rounded-sm bg-gray-100 border-gray-300 text-black group-hover:bg-blue-700 group-hover:text-white transition-colors duration-200">
+//                           Vezi lista de contacte
+//                         </button>
+//                       </td>
+//                     </tr>
+//                   )
+//                 );
+//               })}
+//             </tbody>
+//           </table>
+//         </div>
+//       </div>
+//     ))}
+//   </>
+// );
+
+// const SearchFilterStores = () => {
+//   const [searchText, setSearchText] = useState("");
+//   const [stores, setStores] = useState<Store[]>([]);
+//   const [filteredStores, setFilteredStores] = useState<Store[]>([]);
+//   const [error, setError] = useState("");
+//   const [loading, setLoading] = useState(false);
+//   const [showFilter, setShowFilter] = useState(false);
+//   const isDesktop = useMediaQuery("(min-width: 1024px)");
+
+//   useEffect(() => {
+//     const fetchStores = async () => {
+//       setLoading(true);
+//       try {
+//         const res = await fetch(
+//           `${process.env.NEXT_PUBLIC_BASE_URL}/api/stores`
+//         );
+//         const data = await res.json();
+//         setStores(data.stores);
+//         setFilteredStores(data.stores);
+//       } catch (err) {
+//         console.error(err);
+//         setError("Eroare la încărcarea magazinelor.");
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchStores();
+//   }, []);
+
+//   useEffect(() => {
+//     if (!searchText.trim()) {
+//       setFilteredStores(stores);
+//       return;
+//     }
+
+//     const filtered = stores.filter(
+//       (store) =>
+//         store.name?.toLowerCase().includes(searchText.toLowerCase()) ||
+//         store.address?.toLowerCase().includes(searchText.toLowerCase()) ||
+//         store.email?.toLowerCase().includes(searchText.toLowerCase()) ||
+//         store.phone?.toLowerCase().includes(searchText.toLowerCase()) ||
+//         store.fax?.toLowerCase().includes(searchText.toLowerCase())
+//     );
+//     setFilteredStores(filtered);
+//   }, [searchText, stores]);
+
+//   const groupStoresByFirstLetter = (storesToGroup: Store[]): Group[] => {
+//     const initialGroups: {
+//       [key: string]: Omit<Group, "letters"> & { letters: string[] };
+//     } = {
+//       A: { heading: "A", color: "#777", letters: [] },
+//       B: { heading: "B", color: "#f00", letters: [] },
+//       C: { heading: "C", color: "#00f", letters: [] },
+//       D: { heading: "D", color: "#0f0", letters: [] },
+//       E: { heading: "E", color: "#ff0", letters: [] },
+//       F: { heading: "F", color: "#f0f", letters: [] },
+//       G: { heading: "G", color: "#0ff", letters: [] },
+//       H: { heading: "H", color: "#800", letters: [] },
+//       I: { heading: "I", color: "#008", letters: [] },
+//       J: { heading: "J", color: "#800080", letters: [] },
+//       K: { heading: "K", color: "#808000", letters: [] },
+//       L: { heading: "L", color: "#808080", letters: [] },
+//       M: { heading: "M", color: "#0000ff", letters: [] },
+//       N: { heading: "N", color: "#00ff00", letters: [] },
+//       O: { heading: "O", color: "#ff4500", letters: [] },
+//       P: { heading: "P", color: "#ff6347", letters: [] },
+//       Q: { heading: "Q", color: "#f5f5f5", letters: [] },
+//       R: { heading: "R", color: "#ff1493", letters: [] },
+//       S: { heading: "S", color: "#32cd32", letters: [] },
+//       T: { heading: "T", color: "#c71585", letters: [] },
+//       U: { heading: "U", color: "#8a2be2", letters: [] },
+//       V: { heading: "V", color: "#f0e68c", letters: [] },
+//       W: { heading: "W", color: "#d2691e", letters: [] },
+//       X: { heading: "X", color: "#a52a2a", letters: [] },
+//       Y: { heading: "Y", color: "#b22222", letters: [] },
+//       Z: { heading: "Z", color: "#7fff00", letters: [] },
+//     };
+
+//     storesToGroup.forEach((store) => {
+//       const firstLetter = store.name[0]?.toUpperCase();
+//       if (firstLetter && initialGroups[firstLetter]) {
+//         initialGroups[firstLetter].letters.push(store.name);
+//       }
+//     });
+
+//     const populatedGroups: Group[] = Object.values(initialGroups).filter(
+//       (group) => group.letters.length > 0
+//     );
+
+//     const finalGroups: Group[] = [];
+//     let count1 = 0;
+
+//     while (count1 < populatedGroups.length) {
+//       let currentGroup = populatedGroups[count1];
+//       let combinedHeading = currentGroup.heading;
+//       let combinedLetters = [...currentGroup.letters];
+//       let count2 = count1 + 1;
+
+//       while (
+//         count2 < populatedGroups.length &&
+//         combinedLetters.length < 12 &&
+//         populatedGroups[count2].letters.length > 0
+//       ) {
+//         const nextGroup = populatedGroups[count2];
+//         if (
+//           nextGroup.letters.length >= 3 ||
+//           combinedLetters.length + nextGroup.letters.length <= 8
+//         ) {
+//           combinedHeading += nextGroup.heading;
+//           combinedLetters = [...combinedLetters, ...nextGroup.letters];
+//           count2++;
+//         } else {
+//           break;
+//         }
+//       }
+
+//       finalGroups.push({
+//         heading: combinedHeading,
+//         color: currentGroup.color,
+//         letters: combinedLetters,
+//       });
+
+//       count1 = count2;
+//     }
+
+//     return finalGroups;
+//   };
+
+//   const groupedStores = groupStoresByFirstLetter(filteredStores);
+
+//   return (
+//     <div className="w-full mx-auto px-4">
+//       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
+//         <button
+//           onClick={() => setShowFilter((prev) => !prev)}
+//           className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded"
+//         >
+//           Filtrează rezultatele
+//         </button>
+
+//         {showFilter && (
+//           <form
+//             onSubmit={(e) => e.preventDefault()}
+//             className="flex items-center border w-full max-w-xl relative"
+//           >
+//             <input
+//               type="text"
+//               placeholder="Caută magazine..."
+//               onChange={(e) => setSearchText(e.target.value)}
+//               value={searchText}
+//               className="w-full h-[40px] px-4 py-2 bg-white"
+//             />
+//             <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+//           </form>
+//         )}
+//       </div>
+
+//       {loading && <p className="mt-2">Se încarcă...</p>}
+//       {!loading && error && <p className="mt-2 text-red-500">{error}</p>}
+//       {!loading && !error && groupedStores.length === 0 && (
+//         <p className="mt-2 text-gray-500">
+//           Nu s-au putut grupa magazinele (verificați datele).
+//         </p>
+//       )}
+//       {!loading &&
+//         !error &&
+//         (isDesktop ? (
+//           <TableView groupedStores={groupedStores} stores={stores} />
+//         ) : (
+//           <MobileView groupedStores={groupedStores} stores={stores} />
+//         ))}
+//     </div>
+//   );
+// };
+
+// export default SearchFilterStores;

@@ -341,19 +341,20 @@ const SearchInput = () => {
   };
 
   return (
-    <div className=" bg-white max-w-2xl mx-auto relative">
-      <form onSubmit={handleSubmit} className="flex items-center border w-full">
+    <div className="bg-white w-full max-w-2xl mx-auto  relative">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center border w-full relative"
+      >
         <input
           ref={ref}
           type="text"
           placeholder="Caută utilizatori..."
           onChange={(e) => setSearchText(e.target.value)}
           value={searchText}
-          className="w-[600px] h-[40px] px-4 py-2 "
+          className="w-full lg:max-w-[600px] h-[40px] px-4 py-2 pr-10"
         />
-        <div className="flex justify-end">
-          <Search className=" absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
-        </div>
+        <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
       </form>
 
       {searchSuggestions.length > 0 && (
