@@ -276,7 +276,6 @@ interface User {
   id: number;
   name: string;
   email: string;
-  departments: string;
 }
 
 const SearchInput = () => {
