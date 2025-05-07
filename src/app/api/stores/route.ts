@@ -1,5 +1,6 @@
 // Define a type for our user data
 interface Loc {
+  id?: number;
   name: string;
   email: string | null;
   address: string;
@@ -10,6 +11,7 @@ interface Loc {
 // Mock database
 const stores: Loc[] = [
   {
+    id: 1,
     name: "Arad 1",
     address: "Str. Independenței, nr. 5, Arad, 310005",
     email: "arad1@test.ro",

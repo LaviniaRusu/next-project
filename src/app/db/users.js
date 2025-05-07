@@ -5,6 +5,10 @@ const users = [
     position: "Analist Financiar",
     department: "Financiar",
     city: "Timisoara",
+    store: {
+      id: 1,
+       name: 'Arad 1'
+    },
     email: "elena.marin82@gmail.com",
     phone: "0721553482",
   },
