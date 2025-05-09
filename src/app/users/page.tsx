@@ -66,9 +66,6 @@ interface User {
 }
 
 export default function UsersPage() {
-  // const [users, setUsers] = useState<User[]>([]);
-  // const [error, setError] = useState("");
-  // const [isLoading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
   const {
@@ -78,24 +75,6 @@ export default function UsersPage() {
     refetch,
   } = useFetch<User[]>(() => fetchUsers(searchQuery));
 
-  // useEffect(() => {
-  //   const loadData = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const res = await axios.get<{ users: User[] }>(
-  //         `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=${searchQuery}`
-  //       );
-  //       setUsers(res.data.users);
-  //       console.log(res.data.users);
-  //     } catch (err: any) {
-  //       setError(err.message || "Eroare necunoscută");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   loadData();
-  // }, []);
   useEffect(() => {
     refetch();
   }, [searchQuery]);

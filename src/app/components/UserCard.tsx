@@ -62,7 +62,6 @@ import Link from "next/link";
 interface User {
   id: number;
   name: string;
-  title: string;
   department: string;
   store: {
     id: number;
@@ -70,20 +69,21 @@ interface User {
   email: string;
   phone: string;
   city: string;
+  position: string;
 }
 
 const UserCard = ({ user }: { user: User }) => {
   return (
     <div className="bg-white p-4  shadow-md">
       <div className="mb-1">
-        <h3 className="text-lg font-semibold text-gray-800">{user.name}</h3>
-        <p className="text-sm text-orange-600 font-medium">{user.title}</p>
+        <h3 className="text-lg  text-gray-800">{user.name}</h3>
+        <p className="text-sm text-orange-600 ">{user.position}</p>
       </div>
       <div>
         {user.store ? (
           <Link
             href={`/stores/${user.store.id}`}
-            className="text-sm text-blue-600 mb-3"
+            className="text-sm text-blue-700 mb-3 underline"
           >
             {user.department}
           </Link>
@@ -94,7 +94,7 @@ const UserCard = ({ user }: { user: User }) => {
       {user.store ? (
         <Link
           href={`/stores/${user.store.id}`}
-          className="text-sm text-blue-600 mb-3"
+          className="text-sm text-blue-700 mb-3 underline"
         >
           {user.city}
         </Link>

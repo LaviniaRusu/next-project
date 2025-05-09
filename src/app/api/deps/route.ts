@@ -18,7 +18,7 @@ const depts: Dept[] = [
     city: "Arad 1",
   },
   {
-    id: "6610",
+    id: "6611",
     name: "Valentin Manciuc3",
     position: "Director Magazin",
     department: "Conducere",
@@ -27,7 +27,7 @@ const depts: Dept[] = [
     city: "Arad 1",
   },
   {
-    id: "6610",
+    id: "6612",
     name: "Valentin Manciuc2",
     position: "Director Magazin",
     department: "Conducere",
@@ -45,7 +45,7 @@ const depts: Dept[] = [
     city: "Arad 1",
   },
   {
-    id: "6613",
+    id: "6614",
     name: "Marius Cîmpean2",
     position: "Coordonator simplu",
     department: "Conducere",
@@ -55,7 +55,7 @@ const depts: Dept[] = [
   },
 
   {
-    id: "6613",
+    id: "6618",
     name: "Marius Cîmpean2",
     position: "Coordonator simplu",
     department: "Conducere",
@@ -64,7 +64,7 @@ const depts: Dept[] = [
     city: "Arad 1",
   },
   {
-    id: "6614",
+    id: "6615",
     name: "Florina Gherghel",
     position: "Referent Resurse Umane",
     department: "Resurse Umane",
@@ -144,6 +144,7 @@ const depts: Dept[] = [
     email: "ilinca.stan@dedeman.ro",
     city: "Arad 1",
   },
+
   {
     id: " 8421",
     name: "Elena Marin",
