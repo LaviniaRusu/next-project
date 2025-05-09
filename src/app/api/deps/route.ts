@@ -147,7 +147,7 @@ const depts: Dept[] = [
   },
   {
     id: "7724",
-   name: "Elena Marin",
+    name: "Elena Marin",
     position: "Sef Raion",
     department: "Chimice",
     phone: "0733445566",
