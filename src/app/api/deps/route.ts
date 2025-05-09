@@ -1,4 +1,3 @@
-
 interface Dept {
   id: number | string;
   name: string;
@@ -146,15 +145,14 @@ const depts: Dept[] = [
     city: "Arad 1",
   },
   {
-    id: "7724",
+    id: " 8421",
     name: "Elena Marin",
-    position: "Sef Raion",
-    department: "Chimice",
+    position: "Analist financiar",
+    department: "Financiar",
     phone: "0733445566",
-    email: "ilinca.stan@dedeman.ro",
+    email: "elena.marin82@gmail.com",
     city: "Arad 1",
   },
- 
 ];
 
 const apiresp = {
@@ -167,14 +165,10 @@ const apiresp = {
     phone: "",
     fax: "030000001",
   },
-  
 };
 
 export async function GET(req: Request) {
   try {
-   
-
-
     // return NextResponse.json({ users: filteredUsers });
     return new Response(JSON.stringify({ content: apiresp }));
   } catch {}
