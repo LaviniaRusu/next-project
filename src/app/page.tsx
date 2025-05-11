@@ -38,7 +38,7 @@ export default function Home() {
       setLoading(true);
       try {
         const res = await axios.get<{ users: User[] }>(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search`
+          `/api/mock?search`
         );
         setUsers(res.data.users);
         setFilteredUsers(res.data.users);
@@ -88,7 +88,7 @@ export default function Home() {
 
 "use client";
 
-import SearchInput from "./components/SearchInput";
+import SearchInput from "../components/SearchInput";
 
 export default function Home() {
   return (

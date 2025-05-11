@@ -7,7 +7,7 @@
 // export const fetchUsers = async () => {
 //   try {
 //     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=${searchQuery}`
+//       `/api/mock?search=${searchQuery}`
 //     );
 //     if (!res.ok) throw new Error("Eroare la preluarea utilizatorilor");
 //     const data = await res.json();
@@ -21,9 +21,7 @@
 
 export const fetchUsers = async (searchQuery?: string) => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=${searchQuery}`
-    );
+    const res = await fetch(`/api/mock?search=${searchQuery}`);
     if (!res.ok) throw new Error("Eroare la preluarea utilizatorilor");
     const data = await res.json();
 

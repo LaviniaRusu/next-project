@@ -1,5 +1,5 @@
 "use client";
-import Footer from "./components/Footer";
+import Footer from "../components/Footer";
 // // footer peste tot
 // import Footer from "./components/Footer";
 // import NavBar from "./components/NavBar";
@@ -66,7 +66,7 @@ import Footer from "./components/Footer";
 //     </html>
 //   );
 //
-import NavBar from "./components/NavBar";
+import NavBar from "../components/NavBar";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 

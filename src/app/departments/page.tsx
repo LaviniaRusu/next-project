@@ -29,7 +29,7 @@
 //       setLoading(true);
 //       try {
 //         const res = await axios.get<{ users: Dept[] }>(
-//           `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=${searchQuery}`
+//           `/api/mock?search=${searchQuery}`
 //         );
 //         setDepts(res.data.users);
 //       } catch (err: any) {
@@ -59,7 +59,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { LoaderCircle } from "lucide-react";
-import GroupedDepts from "../components/GroupedDepts";
+import GroupedDepts from "../../components/GroupedDepts";
 
 interface Dept {
   id: number;
@@ -84,7 +84,7 @@ export default function Depti() {
       setLoading(true);
       try {
         const res = await axios.get<{ users: Dept[] }>(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=${searchQuery}`
+          `/api/mock?search=${searchQuery}`
         );
         setDepts(res.data.users);
       } catch (err: any) {

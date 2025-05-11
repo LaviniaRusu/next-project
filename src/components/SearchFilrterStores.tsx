@@ -4,9 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Mail, Phone, Printer, Search } from "lucide-react";
 import useFetch from "../hooks/useFetch";
 import { fetchStores } from "@/services/fetchStores";
-//import { StoreInfo } from "../stores/[id]";
 
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 interface Store {
@@ -51,10 +49,7 @@ const StoreCard = ({ store }: { store: Store }) => {
         </div>
       </div>
       <Link href={`/stores/${store.id}`}>
-        <button
-          // onClick={handleClick}
-          className="mt-4 px-4 py-2 border rounded bg-gray-100 border-gray-300 text-sm text-black hover:bg-blue-700 hover:text-white transition"
-        >
+        <button className="mt-4 px-4 py-2 border rounded bg-gray-100 border-gray-300 text-sm text-black hover:bg-blue-700 hover:text-white transition">
           Vezi lista de contacte
         </button>
       </Link>
@@ -88,7 +83,6 @@ const MobileView = ({
   <>
     {groupedStores.map((group, index) => (
       <div key={index} className="mb-6">
-        {/* Header cu litere afișate orizontal */}
         <div
           className="flex items-center gap-2 text-white font-bold text-lg px-4 py-2 rounded-t"
           style={{ backgroundColor: group.color }}
@@ -183,7 +177,7 @@ const SearchFilterStores = () => {
 
   const [filteredStores, setFilteredStores] = useState<Store[]>([]);
 
-  const [showFilter, setShowFilter] = useState(false); // State for controlling filter visibility
+  const [showFilter, setShowFilter] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const { data: stores, loading, error } = useFetch<Store[]>(fetchStores);
 
@@ -205,17 +199,6 @@ const SearchFilterStores = () => {
   }, [searchText, stores]);
 
   const groupStoresByFirstLetter = (storesToGroup: Store[]): Group[] => {
-    // // Verificăm dacă `stores` este un array valid și dacă nu este gol
-    // if (
-    //   !Array.isArray(storesToGroup?.stores) ||
-    //   storesToGroup.stores.length === 0
-    // ) {
-    //   console.error(
-    //     "storesToGroup.stores nu este un array valid sau este gol:",
-    //     storesToGroup.stores
-    //   );
-    //   return [];
-    // }
     const initialGroups: {
       [key: string]: Omit<Group, "letters"> & { letters: string[] };
     } = {

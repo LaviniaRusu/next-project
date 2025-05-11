@@ -1,62 +1,49 @@
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
+/////////////////////cod bun reftch////////////////////////////////////////////
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+import useFetch from "../hooks/useFetch";
+import { fetchUsers } from "@/services/fetchUsers";
 
 const SearchInput = () => {
   const [searchText, setSearchText] = useState("");
   const [debouncedSearchText, setDebouncedSearchText] = useState("");
-  const [searchSuggestions, setSearchSuggestions] = useState<User[]>([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [suggestionError, setSuggestionError] = useState(null);
 
-  const ref = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // Debounce input
+  const {
+    data: users,
+    loading,
+    error,
+    refetch,
+  } = useFetch(() => fetchUsers(debouncedSearchText), false);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setDebouncedSearchText(searchText);
+      setDebouncedSearchText(searchText.trim());
     }, 300);
+
     return () => clearTimeout(timeout);
   }, [searchText]);
 
-  // Fetch users pentru sugestii
   useEffect(() => {
-    const fetchUsers = async (search?: string) => {
-      const query = search?.trim().toLowerCase();
-      if (!query) {
-        setSearchSuggestions([]);
-        return;
-      }
-
-      setLoading(true);
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/mock?search=${
-            search ? search : ""
-          }`
-        );
-        const data = await res.json();
-        setSearchSuggestions(data.users || []);
-      } catch (err) {
-        setError("Eroare la încărcarea sugestiilor.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUsers(debouncedSearchText);
+    if (debouncedSearchText) {
+      refetch();
+    } else {
+      setSearchSuggestions([]);
+    }
   }, [debouncedSearchText]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (users) {
+      setSearchSuggestions(users);
+    }
+  }, [users]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const query = debouncedSearchText.trim();
     if (query) {
@@ -65,21 +52,19 @@ const SearchInput = () => {
     }
   };
 
-  const handleSuggestionClick = (name: string) => {
+  const handleSuggestionClick = (name) => {
     setSearchText(name);
     setSearchSuggestions([]);
-    ref.current?.focus();
     router.push(`/users?search=${encodeURIComponent(name)}`);
   };
 
   return (
-    <div className="bg-white w-full max-w-2xl mx-auto  relative">
+    <div className="bg-white w-full max-w-2xl mx-auto relative">
       <form
         onSubmit={handleSubmit}
         className="flex items-center border w-full relative"
       >
         <input
-          ref={ref}
           type="text"
           placeholder="Caută utilizatori..."
           onChange={(e) => setSearchText(e.target.value)}
@@ -88,6 +73,10 @@ const SearchInput = () => {
         />
         <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
       </form>
+
+      {loadingSuggestions && (
+        <p className="text-sm text-gray-500 mt-1">Se încarcă sugestiile...</p>
+      )}
 
       {searchSuggestions.length > 0 && (
         <ul className="absolute bg-white border w-full z-10 max-h-60 overflow-y-auto">
@@ -103,7 +92,9 @@ const SearchInput = () => {
         </ul>
       )}
 
-      {error && <p className="mt-2 text-red-500">{error}</p>}
+      {suggestionError && (
+        <p className="mt-2 text-red-500">{suggestionError}</p>
+      )}
     </div>
   );
 };

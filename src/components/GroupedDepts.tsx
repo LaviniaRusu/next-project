@@ -381,7 +381,7 @@
 
 // export default GroupedDepts;
 import { Mail, Phone } from "lucide-react";
-import { Dept } from "../stores/[id]/page";
+import { Dept } from "../app/stores/[id]/page";
 import { useMediaQuery } from "usehooks-ts"; // sau orice alt hook custom/media query
 import { ReactNode } from "react";
 
