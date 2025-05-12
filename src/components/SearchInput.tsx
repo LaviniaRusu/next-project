@@ -9,8 +9,8 @@ const SearchInput = () => {
   const [searchText, setSearchText] = useState("");
   const [debouncedSearchText, setDebouncedSearchText] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
-  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
-  const [suggestionError, setSuggestionError] = useState(null);
+  // const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  // const [suggestionError, setSuggestionError] = useState(null);
 
   const router = useRouter();
 
@@ -74,7 +74,7 @@ const SearchInput = () => {
         <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
       </form>
 
-      {loadingSuggestions && (
+      {loading && (
         <p className="text-sm text-gray-500 mt-1">Se încarcă sugestiile...</p>
       )}
 
@@ -92,9 +92,7 @@ const SearchInput = () => {
         </ul>
       )}
 
-      {suggestionError && (
-        <p className="mt-2 text-red-500">{suggestionError}</p>
-      )}
+      {error?.message && <p className="mt-2 text-red-500">{error.message}</p>}
     </div>
   );
 };
