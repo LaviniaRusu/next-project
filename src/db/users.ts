@@ -1,4 +1,16 @@
-const users = [
+export type User = {
+  id: number;
+  name: string;
+  position: string;
+  department: string;
+  city: string;
+  email: string;
+  phone: string;
+  store?: Store;
+  type: "user";
+};
+
+export const users: User[] = [
   {
     id: 8421,
     name: "Elena Marin",
@@ -7,10 +19,11 @@ const users = [
     city: "Timisoara",
     store: {
       id: 1,
-      name: 'Arad 1'
+      name: "Arad 1",
     },
     email: "elena.marin82@gmail.com",
     phone: "0721553482",
+    type: "user",
   },
   {
     id: 3489,
@@ -20,6 +33,7 @@ const users = [
     city: "Brasov",
     email: "radu.pavel.it@gmail.com",
     phone: "0734981212",
+    type: "user",
   },
   {
     id: 9112,
@@ -29,6 +43,7 @@ const users = [
     city: "Constanta",
     email: "ioana.petrescu@yahoo.com",
     phone: "0742893471",
+    type: "user",
   },
   {
     id: 4502,
@@ -38,6 +53,7 @@ const users = [
     city: "Oradea",
     email: "vlad.munteanu78@gmail.com",
     phone: "0723987344",
+    type: "user",
   },
   {
     id: 7305,
@@ -47,6 +63,7 @@ const users = [
     city: "Bucuresti",
     email: "cristina.dobre.hr@gmail.com",
     phone: "0736123855",
+    type: "user",
   },
   {
     id: 1247,
@@ -56,6 +73,7 @@ const users = [
     city: "Ploiesti",
     email: "george.sandu.service@gmail.com",
     phone: "0721183940",
+    type: "user",
   },
   {
     id: 3674,
@@ -65,6 +83,7 @@ const users = [
     city: "Iasi",
     email: "oana.rusu.marketing@gmail.com",
     phone: "0742335981",
+    type: "user",
   },
   {
     id: 8890,
@@ -74,6 +93,7 @@ const users = [
     city: "Arad",
     email: "dragos.neagu.retea@gmail.com",
     phone: "0723345670",
+    type: "user",
   },
   {
     id: 6123,
@@ -83,6 +103,7 @@ const users = [
     city: "Craiova",
     email: "laura.stoica@gmail.com",
     phone: "0741123489",
+    type: "user",
   },
   {
     id: 3298,
@@ -92,6 +113,7 @@ const users = [
     city: "Sibiu",
     email: "mihai.voicu.callcenter@yahoo.com",
     phone: "0733559002",
+    type: "user",
   },
   {
     id: 9902,
@@ -101,6 +123,7 @@ const users = [
     city: "Baia Mare",
     email: "daniela.toma.region@gmail.com",
     phone: "0721674893",
+    type: "user",
   },
   {
     id: 2084,
@@ -110,6 +133,7 @@ const users = [
     city: "Suceava",
     email: "adrian.ciobanu.logistica@gmail.com",
     phone: "0731982345",
+    type: "user",
   },
   {
     id: 7340,
@@ -119,6 +143,7 @@ const users = [
     city: "Targu Mures",
     email: "camelia.georgescu.cc@gmail.com",
     phone: "0728934321",
+    type: "user",
   },
   {
     id: 8017,
@@ -128,6 +153,7 @@ const users = [
     city: "Pitesti",
     email: "florin.enache.dev@gmail.com",
     phone: "0743100923",
+    type: "user",
   },
   {
     id: 4923,
@@ -137,6 +163,7 @@ const users = [
     city: "Galati",
     email: "simona.zaharia.sales@gmail.com",
     phone: "0723456781",
+    type: "user",
   },
   {
     id: 6872,
@@ -146,6 +173,7 @@ const users = [
     city: "Satu Mare",
     email: "lucian.iliescu.tech@gmail.com",
     phone: "0738110021",
+    type: "user",
   },
   {
     id: 5631,
@@ -155,6 +183,7 @@ const users = [
     city: "Alba Iulia",
     email: "anca.preda.juridic@gmail.com",
     phone: "0729453123",
+    type: "user",
   },
   {
     id: 7542,
@@ -164,6 +193,7 @@ const users = [
     city: "Botosani",
     email: "stefan.costache.prod@gmail.com",
     phone: "0741029384",
+    type: "user",
   },
   {
     id: 4126,
@@ -173,6 +203,7 @@ const users = [
     city: "Deva",
     email: "iulia.barbu.training@gmail.com",
     phone: "0739283741",
+    type: "user",
   },
   {
     id: 9503,
@@ -182,6 +213,7 @@ const users = [
     city: "Zalau",
     email: "robert.albu.data@gmail.com",
     phone: "0729012387",
+    type: "user",
   },
   {
     id: 1001,
@@ -191,6 +223,7 @@ const users = [
     city: "Cluj-Napoca",
     email: "alina.popescu.fin@gmail.com",
     phone: "0721998765",
+    type: "user",
   },
   {
     id: 1002,
@@ -200,6 +233,7 @@ const users = [
     city: "Bacau",
     email: "sorin.vasile.sys@gmail.com",
     phone: "0732111234",
+    type: "user",
   },
   {
     id: 1003,
@@ -209,6 +243,7 @@ const users = [
     city: "Bucuresti",
     email: "carmen.ilie.hr@gmail.com",
     phone: "0723556789",
+    type: "user",
   },
   {
     id: 1004,
@@ -218,6 +253,7 @@ const users = [
     city: "Piatra Neamt",
     email: "marius.gheorghe.net@gmail.com",
     phone: "0742123456",
+    type: "user",
   },
   {
     id: 1005,
@@ -227,6 +263,7 @@ const users = [
     city: "Ramnicu Valcea",
     email: "roxana.iacob.proj@gmail.com",
     phone: "0731987654",
+    type: "user",
   },
   {
     id: 1006,
@@ -236,6 +273,7 @@ const users = [
     city: "Giurgiu",
     email: "cosmin.dragomir.sales@gmail.com",
     phone: "0721992345",
+    type: "user",
   },
   {
     id: 1007,
@@ -245,6 +283,7 @@ const users = [
     city: "Targoviste",
     email: "ana.tudor.recrutare@gmail.com",
     phone: "0733123988",
+    type: "user",
   },
   {
     id: 1008,
@@ -254,6 +293,7 @@ const users = [
     city: "Focsani",
     email: "bogdan.lupu.achizitii@gmail.com",
     phone: "0723432121",
+    type: "user",
   },
   {
     id: 1009,
@@ -263,6 +303,7 @@ const users = [
     city: "Slatina",
     email: "diana.costin.ssm@gmail.com",
     phone: "0742338899",
+    type: "user",
   },
   {
     id: 1010,
@@ -272,6 +313,7 @@ const users = [
     city: "Buzau",
     email: "paul.marinescu.dev@gmail.com",
     phone: "0734110022",
+    type: "user",
   },
   {
     id: 1011,
@@ -281,6 +323,7 @@ const users = [
     city: "Tulcea",
     email: "ioan.cristea.log@gmail.com",
     phone: "0729445566",
+    type: "user",
   },
   {
     id: 1012,
@@ -290,6 +333,7 @@ const users = [
     city: "Resita",
     email: "gabriela.dinca.cr@gmail.com",
     phone: "0741889234",
+    type: "user",
   },
   {
     id: 1013,
@@ -299,6 +343,7 @@ const users = [
     city: "Slobozia",
     email: "doru.stan.legal@gmail.com",
     phone: "0732541278",
+    type: "user",
   },
   {
     id: 1014,
@@ -308,6 +353,7 @@ const users = [
     city: "Roman",
     email: "silvia.ene.cont@gmail.com",
     phone: "0723114499",
+    type: "user",
   },
   {
     id: 1015,
@@ -317,6 +363,7 @@ const users = [
     city: "Campina",
     email: "adelina.lungu.marketing@gmail.com",
     phone: "0743998877",
+    type: "user",
   },
   {
     id: 1016,
@@ -326,6 +373,7 @@ const users = [
     city: "Alexandria",
     email: "emil.tanase.tech@gmail.com",
     phone: "0736332211",
+    type: "user",
   },
   {
     id: 1017,
@@ -335,6 +383,7 @@ const users = [
     city: "Sighetu Marmatiei",
     email: "sorina.avram.comm@gmail.com",
     phone: "0728224455",
+    type: "user",
   },
   {
     id: 1018,
@@ -344,6 +393,7 @@ const users = [
     city: "Petrosani",
     email: "dan.balan.transport@gmail.com",
     phone: "0741223344",
+    type: "user",
   },
   {
     id: 1019,
@@ -353,6 +403,7 @@ const users = [
     city: "Medias",
     email: "teodora.pop.credit@gmail.com",
     phone: "0723456723",
+    type: "user",
   },
   {
     id: 1020,
@@ -362,6 +413,7 @@ const users = [
     city: "Curtea de Arges",
     email: "valentin.boaru.ment@gmail.com",
     phone: "0739221134",
+    type: "user",
   },
   {
     id: 1021,
@@ -371,6 +423,7 @@ const users = [
     city: "Bistrita",
     email: "corina.nedelcu.rh@gmail.com",
     phone: "0743884321",
+    type: "user",
   },
   {
     id: 1022,
@@ -380,6 +433,7 @@ const users = [
     city: "Fagaras",
     email: "rares.mihai.java@gmail.com",
     phone: "0721348922",
+    type: "user",
   },
   {
     id: 1023,
@@ -389,6 +443,7 @@ const users = [
     city: "Caransebes",
     email: "lavinia.moraru.gest@gmail.com",
     phone: "0736541123",
+    type: "user",
   },
   {
     id: 1024,
@@ -398,6 +453,7 @@ const users = [
     city: "Tecuci",
     email: "cristian.voinea.cc@gmail.com",
     phone: "0742789981",
+    type: "user",
   },
   {
     id: 1025,
@@ -407,6 +463,7 @@ const users = [
     city: "Calafat",
     email: "ileana.apostol.fin@gmail.com",
     phone: "0723998812",
+    type: "user",
   },
   {
     id: 1026,
@@ -416,42 +473,7 @@ const users = [
     city: "Lugoj",
     email: "victor.toma.tech@gmail.com",
     phone: "0731992388",
-  },
-  {
-    id: 1027,
-    name: "Mariana Grigore",
-    position: "Coordonator Proiect",
-    department: "Proiectare",
-    city: "Mangalia",
-    email: "mariana.grigore.proj@gmail.com",
-    phone: "0743881276",
-  },
-  {
-    id: 1028,
-    name: "Roxana Udrea",
-    position: "Manager Comunicare",
-    department: "Comunicare",
-    city: "Campulung",
-    email: "roxana.udrea.comm@gmail.com",
-    phone: "0721234765",
-  },
-  {
-    id: 1029,
-    name: "Tudor Popa",
-    position: "Specialist Tehnic",
-    department: "Tehnic",
-    city: "Hunedoara",
-    email: "tudor.popa.tech@gmail.com",
-    phone: "0734123459",
-  },
-  {
-    id: 1030,
-    name: "Lidia Nistor",
-    position: "Analist Resurse Umane",
-    department: "Resurse Umane",
-    city: "Rosiorii de Vede",
-    email: "lidia.nistor.rh@gmail.com",
-    phone: "0728452163",
+    type: "user",
   },
 ];
 

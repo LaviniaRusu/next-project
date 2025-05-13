@@ -1,13 +1,15 @@
-interface Dept {
-  id: number | string;
+export type Dept = {
+  id: string;
   name: string;
   position: string;
   department: string;
   phone: string;
   email: string;
   city: string;
-}
-const depts: Dept[] = [
+  type: "dept";
+};
+
+export const depts: Dept[] = [
   {
     id: "6610",
     name: "Valentin Manciuc",
@@ -16,6 +18,7 @@ const depts: Dept[] = [
     phone: "0749267156",
     email: "valentinmanciuc@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "6611",
@@ -25,6 +28,7 @@ const depts: Dept[] = [
     phone: "0749267156",
     email: "valentinmanciuc@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "6612",
@@ -34,6 +38,7 @@ const depts: Dept[] = [
     phone: "0749267156",
     email: "valentinmanciuc@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "6613",
@@ -43,6 +48,7 @@ const depts: Dept[] = [
     phone: "0744294584",
     email: "coordonator66@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "6614",
@@ -52,8 +58,8 @@ const depts: Dept[] = [
     phone: "0744294584",
     email: "coordonator66@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
-
   {
     id: "6618",
     name: "Marius Cîmpean2",
@@ -62,6 +68,7 @@ const depts: Dept[] = [
     phone: "0744294584",
     email: "coordonator66@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "6615",
@@ -71,6 +78,7 @@ const depts: Dept[] = [
     phone: "0786081720",
     email: "resurse66@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "6647a",
@@ -80,6 +88,7 @@ const depts: Dept[] = [
     phone: "0741694476",
     email: "adrianstanciu@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "6647b",
@@ -89,6 +98,7 @@ const depts: Dept[] = [
     phone: "0740903723",
     email: "andreisaplacan@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "7305",
@@ -98,6 +108,7 @@ const depts: Dept[] = [
     phone: "0736123855",
     email: "cristina.dobre.hr@gmail.com",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "1003",
@@ -107,6 +118,7 @@ const depts: Dept[] = [
     phone: "0723556789",
     email: "carmen.ilie.hr@gmail.com",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "8821",
@@ -116,6 +128,7 @@ const depts: Dept[] = [
     phone: "0721223344",
     email: "mihai.toma@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "8832",
@@ -125,6 +138,7 @@ const depts: Dept[] = [
     phone: "0721999555",
     email: "ana.popa@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "7723",
@@ -134,6 +148,7 @@ const depts: Dept[] = [
     phone: "0743322112",
     email: "george.petrescu@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
   {
     id: "7724",
@@ -143,16 +158,17 @@ const depts: Dept[] = [
     phone: "0733445566",
     email: "ilinca.stan@dedeman.ro",
     city: "Arad 1",
+    type: "dept",
   },
-
   {
-    id: " 8421",
+    id: "8421",
     name: "Elena Marin",
     position: "Analist financiar",
     department: "Financiar",
     phone: "0733445566",
     email: "elena.marin82@gmail.com",
     city: "Arad 1",
+    type: "dept",
   },
 ];
 

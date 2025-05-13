@@ -1,26 +1,24 @@
+import { stores } from "@/db/locs";
 import users from "../../../db/users";
+import { depts } from "../deps/route";
 export async function GET(req: Request) {
   try {
-    const originalUsers = users;
+    const originalUsers = [...users, ...depts, ...stores];
 
     const { searchParams } = new URL(req.url);
     const searchTerm = searchParams.get("search")?.toLowerCase() || "";
+    const filteredUsers = originalUsers.filter((user) =>
+      Object.values(user).some(
+        (val) =>
+          typeof val === "string" && val.toLowerCase().includes(searchTerm)
+      )
+    );
 
-    const filteredUsers = originalUsers.filter((user) => {
-      const fieldsToSearch = [
-        user.name.toLowerCase(),
-        user.position.toLowerCase(),
-        user.department.toLowerCase(),
-        user.city.toLowerCase(),
-        user.email.toLowerCase(),
-        user.phone.toLowerCase(),
-      ];
+    // simulate latency
+    // await new Promise((resolve) => setTimeout(resolve, 300));
 
-      return fieldsToSearch.some((field) => field.includes(searchTerm));
+    return new Response(JSON.stringify({ suggestions: filteredUsers }), {
+      headers: { "Content-Type": "application/json" },
     });
-
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
-    return new Response(JSON.stringify({ users: filteredUsers }));
   } catch {}
 }
