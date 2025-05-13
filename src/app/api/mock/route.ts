@@ -1,9 +1,10 @@
 import { stores } from "@/db/locs";
 import users from "../../../db/users";
-import { depts } from "../deps/route";
+// import { depts } from "../deps/route";
+
 export async function GET(req: Request) {
   try {
-    const originalUsers = [...users, ...depts, ...stores];
+    const originalUsers = [...users, ...stores];
 
     const { searchParams } = new URL(req.url);
     const searchTerm = searchParams.get("search")?.toLowerCase() || "";
