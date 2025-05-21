@@ -167,25 +167,7 @@ import useFetch from "@/hooks/useFetch";
 import { fetchStores } from "@/services/fetchStoreID";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
-export interface StoreInfo {
-  id: number;
-  name: string;
-  address: string;
-  email: string;
-  phone: string;
-  fax: string;
-}
-
-export interface Dept {
-  id: string;
-  name: string;
-  position: string;
-  department: string;
-  phone: string;
-  email: string;
-  city: string;
-}
+import { StoreInfo, Dept } from "@/Types/interfaces";
 
 const DepartmentPage = () => {
   const { id } = useParams();

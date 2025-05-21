@@ -1,3 +1,47 @@
+// "use client";
+
+// import { useSearchParams } from "next/navigation";
+// import UserCard from "../../components/UserCard";
+// import { LoaderCircle } from "lucide-react";
+// import useFetch from "../../hooks/useFetch";
+// import { fetchUsers } from "@/services/fetchUsers";
+// import { useEffect } from "react";
+
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+// }
+
+// export default function UsersPage() {
+//   const searchParams = useSearchParams();
+//   const searchQuery = searchParams.get("search") || "";
+//   const {
+//     data: users,
+//     loading,
+//     error,
+//     refetch,
+//   } = useFetch<User[]>(() => fetchUsers(searchQuery));
+
+//   useEffect(() => {
+//     refetch();
+//   }, [searchQuery]);
+
+//   return (
+//     <div className="p-4">
+//       {loading && <LoaderCircle className="animate-spin " />}
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+//         {users?.map((user) => (
+//           <UserCard key={user.id} user={user} />
+//         ))}
+//         {error && (
+//           <div className="text-red-500">{`Eroare: ${error.message}`}</div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+//////ok card
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -7,33 +51,31 @@ import useFetch from "../../hooks/useFetch";
 import { fetchUsers } from "@/services/fetchUsers";
 import { useEffect } from "react";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
 export default function UsersPage() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
+
   const {
-    data: users,
+    data: suggestions,
     loading,
     error,
     refetch,
-  } = useFetch<User[]>(() => fetchUsers(searchQuery));
+  } = useFetch(() => fetchUsers(searchQuery));
 
   useEffect(() => {
     refetch();
   }, [searchQuery]);
-
+  useEffect(() => {
+    console.log("Suggestions:", suggestions);
+  }, [suggestions]);
   return (
     <div className="p-4">
-      {loading && <LoaderCircle className="animate-spin " />}
+      {loading && <LoaderCircle className="animate-spin" />}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-        {users?.map((user) => (
+        {suggestions?.users?.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
+
         {error && (
           <div className="text-red-500">{`Eroare: ${error.message}`}</div>
         )}

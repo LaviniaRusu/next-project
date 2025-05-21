@@ -442,13 +442,15 @@ const TableView = ({
                   >
                     {person.position}
                   </div>
-                  <div className="font-semibold border-b-2">{person.name}</div>
-                  <div className="border-b-2">{person.id}</div>
-                  <div className="flex items-center border-b-2">
+                  <div className="font-semibold border-b-2  border-black">
+                    {person.name}
+                  </div>
+                  <div className="border-b-2  border-black">{person.id}</div>
+                  <div className="flex items-center border-b-2  border-black">
                     <Phone className="w-4 h-4 mr-1 text-orange-600" />
                     {person.phone}
                   </div>
-                  <div className="flex items-center border-b-2">
+                  <div className="flex items-center border-b-2  border-black">
                     <Mail className="w-4 h-4 mr-1 text-orange-600" />
                     {person.email}
                   </div>

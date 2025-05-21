@@ -58,19 +58,20 @@
 // export default UserCard;
 import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
+import { User } from "@/Types/interfaces";
 
-interface User {
-  id: number;
-  name: string;
-  department: string;
-  store: {
-    id: number;
-  };
-  email: string;
-  phone: string;
-  city: string;
-  position: string;
-}
+// export interface User {
+//   id: number;
+//   name: string;
+//   department: string;
+//   store: {
+//     id: number;
+//   };
+//   email: string;
+//   phone: string;
+//   city: string;
+//   position: string;
+// }
 
 const UserCard = ({ user }: { user: User }) => {
   return (
