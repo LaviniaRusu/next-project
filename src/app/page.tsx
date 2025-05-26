@@ -95,7 +95,6 @@ export default function Home() {
     <div className="p-4 md:max-lg:flex ">
       <h1 className="p-10 place-self-center font-bold">Homepage</h1>
       <SearchInput />
-      <Input />
     </div>
   );
 }
