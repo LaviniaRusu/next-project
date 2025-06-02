@@ -424,7 +424,9 @@ const TableView = ({
                     className={`${
                       idx !== 0 ? "text-transparent" : "font-medium"
                     } ${
-                      idx === people.length - 1 ? "border-b-2 border-black" : ""
+                      idx === people.length - 1
+                        ? "border-b-1  border-gray-400"
+                        : ""
                     }`}
                   >
                     {department}
@@ -436,21 +438,21 @@ const TableView = ({
                         : ""
                     } ${
                       person.position !== people[idx + 1]?.position
-                        ? "border-b-2 border-black"
+                        ? "border-b-1 border-gray-400"
                         : ""
                     }`}
                   >
                     {person.position}
                   </div>
-                  <div className="font-semibold border-b-2  border-black">
+                  <div className="font-semibold border-b-1  border-gray-400">
                     {person.name}
                   </div>
-                  <div className="border-b-2  border-black">{person.id}</div>
-                  <div className="flex items-center border-b-2  border-black">
+                  <div className="border-b-1  border-gray-400">{person.id}</div>
+                  <div className="flex items-center border-b-1   border-gray-400">
                     <Phone className="w-4 h-4 mr-1 text-orange-600" />
                     {person.phone}
                   </div>
-                  <div className="flex items-center border-b-2  border-black">
+                  <div className="flex items-center border-b-1  border-gray-400">
                     <Mail className="w-4 h-4 mr-1 text-orange-600" />
                     {person.email}
                   </div>
@@ -470,7 +472,7 @@ const MobileCardView = ({
   groupedByCity: Record<string, Dept[]>;
 }) => {
   return (
-    <div className="space-y-10 md:hidden">
+    <div className="space-y-10 ">
       {Object.entries(groupedByCity).map(([city, cityDepts]) => {
         const groupedByDepartment = cityDepts.reduce((acc, dept) => {
           if (!acc[dept.department]) acc[dept.department] = [];
@@ -535,7 +537,7 @@ const GroupedDepts = ({
     storeInfo: {};
   };
 }) => {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
 
   const groupedByCity = apiresp.deps.reduce((acc, dept) => {
     if (!acc[dept.city]) acc[dept.city] = [];
