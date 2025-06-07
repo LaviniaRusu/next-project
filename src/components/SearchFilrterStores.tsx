@@ -4,23 +4,8 @@ import React, { useEffect, useState } from "react";
 import { Mail, Phone, Printer, Search } from "lucide-react";
 import useFetch from "../hooks/useFetch";
 import { fetchStores } from "@/services/fetchStores";
-
+import { Store, Group } from "@/Types/interfaces";
 import Link from "next/link";
-
-interface Store {
-  id: number;
-  name: string;
-  address: string;
-  email: string;
-  phone: string;
-  fax: string;
-}
-
-interface Group {
-  letters: string[];
-  color: string;
-  heading: string;
-}
 
 const StoreCard = ({ store }: { store: Store }) => {
   // const router = useRouter();
@@ -315,7 +300,6 @@ const SearchFilterStores = () => {
         </div>
       </div>
 
-      {/* Restul componentei */}
       {loading && <p className="mt-2">Se încarcă...</p>}
       {!loading && error && (
         <p className="mt-2 text-red-500">{error.message}</p>

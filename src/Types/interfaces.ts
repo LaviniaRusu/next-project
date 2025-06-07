@@ -46,3 +46,18 @@ export interface Dept {
   email: string;
   city: string;
 }
+
+export interface Store {
+  id: number;
+  name: string;
+  address: string;
+  email: string;
+  phone: string;
+  fax: string;
+}
+
+export interface Group {
+  letters: string[];
+  color: string;
+  heading: string;
+}
