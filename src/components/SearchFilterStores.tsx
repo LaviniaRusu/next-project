@@ -6,6 +6,7 @@ import useFetch from "../hooks/useFetch";
 import { fetchStores } from "@/services/fetchStores";
 import { Store, Group } from "@/Types/interfaces";
 import Link from "next/link";
+import { Input } from "./ui/input";
 
 const StoreCard = ({ store }: { store: Store }) => {
   // const router = useRouter();
@@ -269,9 +270,7 @@ const SearchFilterStores = () => {
   //
   return (
     <div className="w-full mx-auto ">
-      {/* Wrapper pentru inputul de căutare utilizatori și filtrare */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-start gap-4 mb-7 p-4">
-        {/* Butonul de filtrare */}
         <div className="w-full lg:w-auto flex justify-center lg:justify-start">
           <button
             onClick={() => setShowFilter((prev) => !prev)}
@@ -287,7 +286,7 @@ const SearchFilterStores = () => {
               onSubmit={(e) => e.preventDefault()}
               className="flex items-center border w-full "
             >
-              <input
+              <Input
                 type="text"
                 placeholder="Caută magazine..."
                 onChange={(e) => setSearchText(e.target.value)}

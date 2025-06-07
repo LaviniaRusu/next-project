@@ -563,6 +563,7 @@ import { Mail, Phone } from "lucide-react";
 import { Dept } from "../Types/interfaces";
 import { useMediaQuery } from "usehooks-ts";
 import { useState } from "react";
+import { Input } from "./ui/input";
 
 const TableView = ({
   groupedByCity,
@@ -717,6 +718,7 @@ const GroupedDepts = ({
 }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [search, setSearch] = useState("");
+  const [showFilter, setShowFilter] = useState(false);
 
   const filteredDeps = apiresp.deps.filter(
     (d) =>
@@ -738,14 +740,34 @@ const GroupedDepts = ({
     groupedByCity[dept.city].push(dept);
   });
   return (
-    <div className="space-y-6">
-      <input
-        type="text"
-        placeholder="Filtrează după nume, funcție, oraș, departament..."
-        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div className="w-full mx-auto">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-start gap-4 mb-7 p-4">
+        <div className="w-full lg:w-auto flex justify-center lg:justify-start">
+          <button
+            onClick={() => setShowFilter((prev) => !prev)}
+            className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap"
+          >
+            Filtrează rezultatele
+          </button>
+        </div>
+
+        <div className="bg-white lg:ml-58 mx-auto relative flex justify-center w-full lg:w-auto">
+          {showFilter && (
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex items-start border w-full"
+            >
+              <Input
+                type="text"
+                placeholder="Filtrează după nume, funcție, oraș, departament..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-[600px] h-[40px] px-4 py-2 bg-white"
+              />
+            </form>
+          )}
+        </div>
+      </div>
 
       {Object.keys(groupedByCity).length === 0 ? (
         <p className="text-gray-500 text-center mt-6">

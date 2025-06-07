@@ -1,6 +1,6 @@
 "use client";
 
-import SearchFilterStores from "../../components/SearchFilrterStores";
+import SearchFilterStores from "../../components/SearchFilterStores";
 
 export default function Stores() {
   return (
