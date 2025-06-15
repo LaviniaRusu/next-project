@@ -27,7 +27,7 @@
 //   const {
 //     data: fetchedData,
 //     loading,
-//     error,
+
 //     refetch,
 //   } = useFetch(() => fetchUsers(debouncedSearchText), false);
 
@@ -98,8 +98,25 @@
 //     }
 //   };
 
-//   const handleSuggestionClick = (value: string) => {
-//     router.push(`/users?search=${encodeURIComponent(value)}`);
+//   const handleSuggestionClick = (suggestion: Suggestion) => {
+//     switch (suggestion.type) {
+//       case "store":
+//         router.push("/stores/1");
+//         break;
+//       case "user":
+//         router.push(
+//           `/users?search=${encodeURIComponent(suggestion.name || "")}`
+//         );
+//         break;
+//       case "department":
+//         router.push(
+//           `/users?search=${encodeURIComponent(suggestion.department || "")}`
+//         );
+//         break;
+//       default:
+//         router.push("/");
+//     }
+
 //     setSearchText("");
 //     setSuggestions({ users: [], departments: [], stores: [] });
 //   };
@@ -162,7 +179,7 @@
 //                   <li
 //                     key={`user-${user.id}`}
 //                     className="p-3 cursor-pointer hover:bg-gray-100 flex justify-between items-center"
-//                     onClick={() => handleSuggestionClick(user.name || "")}
+//                     onClick={() => handleSuggestionClick(user)} // ⬅️ trimitem obiectul user
 //                   >
 //                     <div className="flex items-center gap-2">
 //                       <UserIcon className="w-4 h-4 text-gray-600" />
@@ -178,7 +195,7 @@
 //                   <li
 //                     key={`department-${dep.department}`}
 //                     className="p-3 cursor-pointer hover:bg-gray-100 flex justify-between items-center"
-//                     onClick={() => handleSuggestionClick(dep.department || "")}
+//                     onClick={() => handleSuggestionClick(dep)} // ⬅️ trimitem obiectul department
 //                   >
 //                     <div className="flex items-center gap-2">
 //                       <FolderIcon className="w-4 h-4 text-gray-600" />
@@ -191,7 +208,7 @@
 //                   <li
 //                     key={`store-${store.city}`}
 //                     className="p-3 cursor-pointer hover:bg-gray-100 flex items-center"
-//                     onClick={() => handleSuggestionClick(store.city || "")}
+//                     onClick={() => handleSuggestionClick(store)} // ⬅️ trimitem obiectul store
 //                   >
 //                     <StoreIcon className="w-4 h-4 text-gray-600" />
 //                     <div className="ml-2">{store.city}</div>
@@ -202,9 +219,15 @@
 //         </div>
 //       )}
 
-//       {!loading && error && (
-//         <p className="mt-2 text-red-500">{error.message}</p>
-//       )}
+//       {!loading &&
+//         debouncedSearchText.length >= 2 &&
+//         suggestions.users.length === 0 &&
+//         suggestions.departments.length === 0 &&
+//         suggestions.stores.length === 0 && (
+//           <p className="mt-2 text-red-500 text-sm text-center">
+//             Nu s-au găsit rezultate pentru „{debouncedSearchText}”.
+//           </p>
+//         )}
 //     </div>
 //   );
 // };
@@ -334,7 +357,7 @@ const SearchInput = () => {
   };
 
   return (
-    <div className="bg-white w-full max-w-2xl mx-auto relative">
+    <div className="bg-white w-full max-w-2xl  mx-auto relative">
       <form onSubmit={handleSubmit} className="w-full relative">
         <div className="relative w-full">
           <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">

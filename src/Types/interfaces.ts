@@ -61,3 +61,10 @@ export interface Group {
   color: string;
   heading: string;
 }
+export interface AdvancedSearch {
+  department: string;
+  position: string;
+
+  city: string;
+  phone: string;
+}

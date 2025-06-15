@@ -1,100 +1,110 @@
-/*"use client";
+// "use client";
+// import LogoDedeman from "@/Images/Logo_Dedeman.svg.png";
+// import Image from "next/image";
+// import Link from "next/link";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { LoaderCircle } from "lucide-react";
-import SearchInput from "./components/SearchInput";
+// import SearchInput from "../components/SearchInput";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+// export default function Home() {
+//   return (
+//     <div className="min-h-screen flex flex-col items-center justify-start pt-24 px-4">
+//       {/* <h1 className="text-4xl font-bold mb-6 text-center">Homepage</h1> */}
+//       <div>
+//         <Image src={LogoDedeman} alt="Logo Dedeman" className="w-60 h-auto" />
+//       </div>
+//       <SearchInput />
+//     </div>
+//   );
+// }
+// "use client";
+// import LogoDedeman from "@/Images/Logo_Dedeman.svg.png";
+// import Image from "next/image";
 
-export default function Home() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(false);
-  const [searchResult, setSearchResult] = useState<string | null>(null);
+// import SearchInput from "../components/SearchInput";
+// import { Link } from "lucide-react";
 
-  const handleSearch = (searchText: string) => {
-    setSearchResult(searchText);
-    filterUsers(searchText);
-  };
-
-  const filterUsers = (searchText: string) => {
-    const lowercased = searchText.toLowerCase();
-    const filtered = users.filter(
-      (user) =>
-        user.name.toLowerCase().includes(lowercased) ||
-        user.email.toLowerCase().includes(lowercased)
-    );
-    setFilteredUsers(filtered);
-  };
-
-  useEffect(() => {
-    const loadData = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get<{ users: User[] }>(
-          `/api/mock?search`
-        );
-        setUsers(res.data.users);
-        setFilteredUsers(res.data.users);
-      } catch (err: any) {
-        setError(err.message || "Eroare necunoscută");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
-  }, []);
-
-  return (
-    <div className="p-4">
-      <SearchInput onSearch={handleSearch} />
-
-      {searchResult && (
-        <p className="mt-2 text-sm text-gray-600">
-          Rezultate pentru: <strong>{searchResult}</strong>
-        </p>
-      )}
-
-      {error && <div className="text-red-500">{`Eroare: ${error}`}</div>}
-      {isLoading && <LoaderCircle className="animate-spin" />}
-
-      {filteredUsers.map((user) => (
-        <div
-          key={user.id}
-          className="border border-b-neutral-600 p-2 rounded mb-3"
-        >
-          <p>
-            <strong>Nume:</strong> {user.name}
-          </p>
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
-        </div>
-      ))}
-
-      {!isLoading && filteredUsers.length === 0 && (
-        <p>Nu s-au găsit utilizatori.</p>
-      )}
-    </div>
-  );
-}*/
+// export default function Home() {
+//   return (
+//     <div className="min-h-screen flex flex-col items-center justify-start pt-24 px-4">
+//       {/* <h1 className="text-4xl font-bold mb-6 text-center">Homepage</h1> */}
+//       <div>
+//         <Image src={LogoDedeman} alt="Logo Dedeman" className="w-60 h-auto" />
+//       </div>
+//       <SearchInput />
+//       <div className="flex space-x-8">
+//         <button className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap mt-6 ">
+//           Cautare avansata
+//         </button>
+//         <button
+//           onClick={() => (window.location.href = "/stores")}
+//           className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap mt-6"
+//         >
+//           Lista magazine
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
 
 "use client";
+import LogoDedeman from "@/Images/Logo_Dedeman.svg.png";
+import Image from "next/image";
 
 import SearchInput from "../components/SearchInput";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Home() {
+  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const router = useRouter();
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start pt-24 px-4">
-      <h1 className="text-4xl font-bold mb-6 text-center">Homepage</h1>
-      <SearchInput />
+    <div>
+      <div className="min-h-screen flex flex-col items-center justify-start pt-45 px-4">
+        {/* <h1 className="text-4xl font-bold mb-6 text-center">Homepage</h1> */}
+        <div>
+          <Image src={LogoDedeman} alt="Logo Dedeman" className="w-60 h-auto" />
+        </div>
+        <SearchInput />
+        <div className="flex space-x-8">
+          <button
+            className="bg-gray-300 hover:bg-blue-800 hover:text-white transition-colors px-5 py-1 rounded whitespace-nowrap mt-6 "
+            onClick={() => setShowAdvancedSearch((prev) => !prev)}
+          >
+            Cautare avansata
+          </button>
+          <button
+            onClick={() => router.push("/stores")}
+            className="bg-gray-300 hover:bg-blue-800 hover:text-white transition-colors px-7 py-1 rounded whitespace-nowrap mt-6"
+          >
+            Lista magazine
+          </button>
+        </div>
+        {showAdvancedSearch && (
+          <div className="max-w-full">
+            <div className="grid grid-cols-3  gap-x-8 gap-y-4 pt-6 ">
+              <select className=" bg-white  px-2 py-1 rounded">
+                <option>Department</option>
+              </select>
+              <select className="bg-white  px-2 py-1 rounded">
+                <option>Functie</option>
+              </select>
+              <select className="bg-white  px-2 py-1 rounded">
+                <option>Magazin</option>
+              </select>
+              <select className="bg-white  px-2 py-1 rounded">
+                <option>Judet</option>
+              </select>
+              <input
+                className="bg-white  px-2 py-1 rounded"
+                placeholder="Telefon"
+              />
+              <button className="bg-blue-800 text-white px-2 py-1 rounded">
+                Resetează filtrele
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
