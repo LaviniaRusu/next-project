@@ -1,51 +1,3 @@
-// "use client";
-// import LogoDedeman from "@/Images/Logo_Dedeman.svg.png";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// import SearchInput from "../components/SearchInput";
-
-// export default function Home() {
-//   return (
-//     <div className="min-h-screen flex flex-col items-center justify-start pt-24 px-4">
-//       {/* <h1 className="text-4xl font-bold mb-6 text-center">Homepage</h1> */}
-//       <div>
-//         <Image src={LogoDedeman} alt="Logo Dedeman" className="w-60 h-auto" />
-//       </div>
-//       <SearchInput />
-//     </div>
-//   );
-// }
-// "use client";
-// import LogoDedeman from "@/Images/Logo_Dedeman.svg.png";
-// import Image from "next/image";
-
-// import SearchInput from "../components/SearchInput";
-// import { Link } from "lucide-react";
-
-// export default function Home() {
-//   return (
-//     <div className="min-h-screen flex flex-col items-center justify-start pt-24 px-4">
-//       {/* <h1 className="text-4xl font-bold mb-6 text-center">Homepage</h1> */}
-//       <div>
-//         <Image src={LogoDedeman} alt="Logo Dedeman" className="w-60 h-auto" />
-//       </div>
-//       <SearchInput />
-//       <div className="flex space-x-8">
-//         <button className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap mt-6 ">
-//           Cautare avansata
-//         </button>
-//         <button
-//           onClick={() => (window.location.href = "/stores")}
-//           className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap mt-6"
-//         >
-//           Lista magazine
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
 "use client";
 import LogoDedeman from "@/Images/Logo_Dedeman.svg.png";
 import Image from "next/image";
@@ -60,11 +12,12 @@ export default function Home() {
   return (
     <div>
       <div className="min-h-screen flex flex-col items-center justify-start pt-45 px-4">
-        {/* <h1 className="text-4xl font-bold mb-6 text-center">Homepage</h1> */}
         <div>
           <Image src={LogoDedeman} alt="Logo Dedeman" className="w-60 h-auto" />
         </div>
-        <SearchInput />
+        <div className="w-full max-w-xl">
+          <SearchInput />
+        </div>
         <div className="flex space-x-8">
           <button
             className="bg-gray-300 hover:bg-blue-800 hover:text-white transition-colors px-5 py-1 rounded whitespace-nowrap mt-6 "

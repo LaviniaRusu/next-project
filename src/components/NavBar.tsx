@@ -26,15 +26,15 @@ const NavBar = ({ onSearch }: Props) => {
           <Image src={LogoDedeman} alt="Logo Dedeman" className="w-40 h-auto" />
         </Link>
       </div>
+      <div className="w-full max-w-2xl mx-auto lg:absolute lg:top-4 lg:left-1/2 lg:-translate-x-1/2 hidden sm:block">
+        <SearchInput />
+      </div>
+
       <div className="ml-auto block sm:hidden">
         <MobileMenu />
       </div>
 
-      <div className="hidden sm:block flex-1">
-        <SearchInput />
-      </div>
-
-      <div className="hidden sm:flex items-center space-x-2">
+      <div className="hidden sm:flex items-center space-x-2 ml-auto">
         <FileText className="w-6 h-6 -scale-y-100 stroke-black" />
         <User className="w-6 h-6 stroke-black fill-black" />
       </div>

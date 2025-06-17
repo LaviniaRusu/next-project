@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Search } from "lucide-react";
 import { Dept } from "../Types/interfaces";
 import { useMediaQuery } from "usehooks-ts";
 import { useState } from "react";
@@ -190,7 +190,7 @@ const GroupedDepts = ({
           </button>
         </div>
 
-        <div className="bg-white lg:ml-58 mx-auto relative flex justify-center w-full lg:w-auto">
+        <div className="w-full max-w-2xl mx-auto lg:absolute  lg:left-1/2 lg:-translate-x-1/2">
           {showFilter && (
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -201,7 +201,7 @@ const GroupedDepts = ({
                 placeholder="Filtrează după nume, funcție, oraș, departament..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-[600px] h-[40px] px-4 py-2 bg-white"
+                className="bg-white w-full h-[40px] pl-10 pr-10"
               />
             </form>
           )}
