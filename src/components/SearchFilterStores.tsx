@@ -299,7 +299,7 @@ const SearchFilterStores = () => {
               </form>
             </div>
 
-            <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-full max-w-2xl z-0">
+            <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-full max-w-2xl ">
               <form
                 onSubmit={(e) => e.preventDefault()}
                 className="flex items-center border  w-full rounded"
