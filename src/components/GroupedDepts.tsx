@@ -1,4 +1,4 @@
-import { Mail, Phone, Search } from "lucide-react";
+import { Funnel, Mail, Phone, Search } from "lucide-react";
 import { Dept } from "../Types/interfaces";
 import { useMediaQuery } from "usehooks-ts";
 import { useState } from "react";
@@ -157,7 +157,6 @@ const GroupedDepts = ({
 }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [search, setSearch] = useState("");
-  const [showFilter, setShowFilter] = useState(false);
 
   const filteredDeps = apiresp.deps.filter(
     (d) =>
@@ -180,31 +179,20 @@ const GroupedDepts = ({
   });
   return (
     <div className="w-full mx-auto">
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-start gap-4 mb-7 p-4">
-        <div className="w-full lg:w-auto flex justify-center lg:justify-start">
-          <button
-            onClick={() => setShowFilter((prev) => !prev)}
-            className="bg-gray-300 hover:bg-blue-500 hover:text-white transition-colors px-4 py-2 rounded whitespace-nowrap"
-          >
-            Filtrează rezultatele
-          </button>
-        </div>
+      <div className="flex flex-row gap-4 mb-7 p-4 bg-gray-150">
+        <div className="w-full flex flex-row  ">
+          <div className="pt-1">
+            <Funnel className="size-7  " />
+          </div>
+          <p className="pe-5 ps-1 pt-2 ">Filtreaza rezultatele</p>
 
-        <div className="w-full max-w-2xl mx-auto lg:absolute  lg:left-1/2 lg:-translate-x-1/2">
-          {showFilter && (
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex items-start border w-full"
-            >
-              <Input
-                type="text"
-                placeholder="Filtrează după nume, funcție, oraș, departament..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="bg-white w-full h-[40px] pl-10 pr-10"
-              />
-            </form>
-          )}
+          <Input
+            type="text"
+            placeholder="Filtrează după nume, funcție, oraș, departament..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full h-[40px] pl-10 pr-10 bg-white lg:max-w-[600] md:max-w-[480] sm:max-w-[330]"
+          />
         </div>
       </div>
 

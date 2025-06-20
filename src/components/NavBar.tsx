@@ -1,4 +1,48 @@
-"use client";
+// "use client";
+// import { useState, useEffect } from "react";
+// import SearchInput from "./SearchInput";
+// import MobileMenu from "./MobileMenu";
+// import { FileText, User } from "lucide-react";
+// import LogoDedeman from "@/Images/Logo_Dedeman.svg.png";
+// import Image from "next/image";
+// import Link from "next/link";
+// interface Props {
+//   onSearch: (searchText: string) => void;
+// }
+
+// const NavBar = ({ onSearch }: Props) => {
+//   const [isClient, setIsClient] = useState(false);
+
+//   useEffect(() => {
+//     setIsClient(true);
+//   }, []);
+
+//   if (!isClient) return null;
+
+//   return (
+//     <div className="w-full h-[80px] flex items-center px-4 py-2 bg-gray-100 shadow-md shadow-gray-500/50">
+//       <div>
+//         <Link href="http://localhost:3000/">
+//           <Image src={LogoDedeman} alt="Logo Dedeman" className="w-40 h-auto" />
+//         </Link>
+//       </div>
+//       <div className="w-full max-w-2xl mx-auto lg:absolute lg:top-4 lg:left-1/2 lg:-translate-x-1/2 hidden sm:block">
+//         <SearchInput />
+//       </div>
+
+//       <div className="ml-auto block sm:hidden">
+//         <MobileMenu />
+//       </div>
+
+//       <div className="hidden sm:flex items-center space-x-2 ml-auto">
+//         <FileText className="w-6 h-6 -scale-y-100 stroke-black" />
+//         <User className="w-6 h-6 stroke-black fill-black" />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default NavBar;"use client";
 import { useState, useEffect } from "react";
 import SearchInput from "./SearchInput";
 import MobileMenu from "./MobileMenu";
@@ -20,14 +64,15 @@ const NavBar = ({ onSearch }: Props) => {
   if (!isClient) return null;
 
   return (
-    <div className="w-full h-[80px] flex items-center px-4 py-2 bg-gray-100 shadow-md shadow-gray-500/50">
-      <div>
+    <div className="w-full h-[80px] flex flex-row px-4 py-2 bg-gray-100 shadow-md shadow-gray-500/50">
+      <div className="flex flex-row absolute">
         <Link href="http://localhost:3000/">
-          <Image src={LogoDedeman} alt="Logo Dedeman" className="w-40 h-auto" />
+          <Image src={LogoDedeman} alt="Logo Dedeman" className="max-w-40 " />
         </Link>
-      </div>
-      <div className="w-full max-w-2xl mx-auto lg:absolute lg:top-4 lg:left-1/2 lg:-translate-x-1/2 hidden sm:block">
-        <SearchInput />
+
+        <div className="w-full lg:min-w-[800] md:min-w-[550] sm:min-w-[400] h-[40px] pt-2.5 pl-7 pr-10 hidden sm:block">
+          <SearchInput />
+        </div>
       </div>
 
       <div className="ml-auto block sm:hidden">
