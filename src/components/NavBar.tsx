@@ -70,7 +70,7 @@ const NavBar = ({ onSearch }: Props) => {
           <Image src={LogoDedeman} alt="Logo Dedeman" className="max-w-40 " />
         </Link>
 
-        <div className="w-full lg:min-w-[800] md:min-w-[550] sm:min-w-[400] h-[40px] pt-2.5 pl-7 pr-10 hidden sm:block">
+        <div className="w-full lg:min-w-[670] md:min-w-[550] sm:min-w-[400] h-[40px] pt-2.5 pl-7 pr-10 hidden sm:block">
           <SearchInput />
         </div>
       </div>
