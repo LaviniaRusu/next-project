@@ -1,4 +1,5 @@
 "use client";
+import { Toaster } from "@/components/ui/sonner";
 import Footer from "../components/Footer";
 // // footer peste tot
 // import Footer from "./components/Footer";
@@ -96,6 +97,12 @@ export default function RootLayout({
 
         <div className="sticky bottom-0 w-full">
           <Footer isHomePage={isHomePage} />
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              className: "rounded-lg bg-neutral-900 text-white shadow-xl",
+            }}
+          />
         </div>
       </body>
     </html>

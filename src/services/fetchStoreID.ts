@@ -15,6 +15,7 @@
 // services/fetchStoreID.ts
 "use client";
 
+import { Divide } from "lucide-react";
 import { Dept } from "../app/stores/[id]/page";
 
 export const fetchStores = async (storeId: number) => {
@@ -30,7 +31,7 @@ export const fetchStores = async (storeId: number) => {
   const { deps, storeInfo } = data.content;
 
   if (storeInfo.id !== storeId) {
-    throw new Error("Orașul nu a fost găsit.");
+    throw new Error("Magazinul nu a fost găsit.");
   }
 
   const filteredDepts = deps.filter(

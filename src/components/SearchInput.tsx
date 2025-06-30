@@ -431,7 +431,7 @@ const SearchInput = () => {
                     <li
                       key={`department-${dep.department}`}
                       className="p-3 cursor-pointer hover:bg-gray-100 flex justify-between items-center"
-                      onClick={() => handleSuggestionClick(dep)} // ⬅️ trimitem obiectul department
+                      onClick={() => handleSuggestionClick(dep)} //  trimitem obiectul department
                     >
                       <div className="flex items-center gap-2">
                         <FolderIcon className="w-4 h-4 text-gray-600" />

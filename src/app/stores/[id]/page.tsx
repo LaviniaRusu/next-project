@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { StoreInfo, Dept } from "@/Types/interfaces";
 import { Loader, LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 
 const DepartmentPage = () => {
   const { id } = useParams();
@@ -41,15 +42,34 @@ const DepartmentPage = () => {
       setError(fetchError.message);
     }
   }, [fetchError]);
+  useEffect(() => {
+    if (fetchError) {
+      setError(fetchError.message);
+      toast(
+        "Magazinul nu a fost găsit. Întoarce-te înapoi la magazinele existente.",
+        { duration: 5000 }
+      );
+    }
+  }, [fetchError]);
 
   if (loading)
     return (
       <div>
-        {" "}
         <LoaderCircle className="animate-spin" />
       </div>
     );
-  if (error) return <div>{error}</div>;
+  if (error)
+    return (
+      <div className="flex flex-col items-center justify-center py-10">
+        {error}
+        <button
+          onClick={() => (window.location.href = "/stores")}
+          className="px-4 py-1 bg-blue-700 text-white rounded hover:bg-blue-600"
+        >
+          Spre magazine
+        </button>
+      </div>
+    );
   if (!departments.length) return <div>Departamente nu au fost găsite.</div>;
   if (!storeInfo) return null;
 
