@@ -1,18 +1,3 @@
-// "use client";
-// export const fetchStores = async () => {
-//   try {
-//     const res = await fetch(`/api/deps`);
-//     if (!res.ok) throw new Error("Orașul nu a fost găsit.");
-//     const data = await res.json();
-
-//     return data.stores;
-//   } catch {
-//     console.log("err");
-//   }
-// };
-
-// fetchStoreID.ts
-// services/fetchStoreID.ts
 "use client";
 
 import { Divide } from "lucide-react";
