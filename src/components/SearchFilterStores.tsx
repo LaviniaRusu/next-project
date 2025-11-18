@@ -86,7 +86,7 @@ const MobileView = ({
           return (
             <div key={letter} className="mb-4">
               <div
-                className="sticky top-14 z-10 text-white font-bold text-lg text-center"
+                className="sticky top-20 z-10 text-white font-bold text-lg text-center"
                 style={{ backgroundColor: group.color }}
               >
                 {letter}

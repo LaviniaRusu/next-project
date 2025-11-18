@@ -34,7 +34,7 @@ export default function Home() {
         </div>
         {showAdvancedSearch && (
           <div className="max-w-full">
-            <div className="grid grid-cols-3  gap-x-8 gap-y-4 pt-6 ">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-4 pt-6">
               <select className=" bg-white  px-2 py-1 rounded">
                 <option>Department</option>
               </select>

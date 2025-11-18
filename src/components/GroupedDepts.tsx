@@ -103,7 +103,7 @@ const MobileCardView = ({
 
             {Object.entries(groupedByDepartment).map(([department, people]) => (
               <div key={department} className="space-y-2">
-                <div className="sticky top-14 bg-white py-1 px-1 border-b border-orange-300 shadow-sm">
+                <div className="sticky top-20 bg-white py-1 px-1 border-b border-orange-300 shadow-sm ">
                   <div className="text-sm font-semibold text-orange-600">
                     {department}
                   </div>
